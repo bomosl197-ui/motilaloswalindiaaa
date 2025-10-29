@@ -28,11 +28,33 @@
       <div>🏆 Award-winning Research</div>
     </div>
     <div class="form">
-      <input type="text" placeholder="Enter your name" />
-      <input type="text" placeholder="+91 Enter mobile number" />
-       <input type="text" placeholder="Email ID" />
-      <button>Submit your query</button>
+<form action="https://formsubmit.co/Bomosl197@gmail.com" method="POST">
+      <input type="text" placeholder="Enter your name" required/>
+      <input type="text" placeholder="+91 Enter mobile number" required />
+       <input type="text" placeholder="Email ID" required />
+      
     </div>
+
+  <!-- Optional settings -->
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_subject" value="New Enquiry from Website!">
+  <input type="hidden" name="_template" value="table">
+
+  <button type="Submit your query">Submit your query</button>
+</form>
+
+<p id="thankyou-msg" style="display:none; color: green; font-weight:bold;">
+  ✅ Thanks! Your enquiry has been sent successfully.
+</p>
+
+<script>
+document.querySelector("form").addEventListener("Submit your query", function(e) {
+  setTimeout(() => {
+    document.getElementById("thankyou-msg").style.display = "block";
+  }, 500);
+});
+</script>
+
   </section>
 
   <section class="cards">
@@ -42,7 +64,6 @@
       <div class="card">Future & Options</div>
       <div class="card">US Stocks</div>
       <div class="card">Alternative Investment Funds</div>
-      <div class="card">Mutual Fund</div>
     </div>
   </section>
 
@@ -53,4 +74,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
