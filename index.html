@@ -28,24 +28,35 @@
       <div>🏆 Award-winning Research</div>
     </div>
     <div class="form">
-<form action="https://docs.google.com/forms/d/e/1FAIpQLScFpyKOw1wWq-_Hij8PQgUrrzrl2k9hVqgxgUh-LMvGcon-IQ/formResponse?usp=sharing&ouid=100507371654591464516
-" method="POST" target="_self">
+<form id="queryForm" action="https://docs.google.com/forms/d/e/1FAIpQLScFpyKOw1wWq-_Hij8PQgUrrzrl2k9hVqgxgUh-LMvGcon-IQ/formResponse" method="POST">
   <input type="text" name="entry.1111111111" placeholder="Enter your name" required>
   <input type="text" name="entry.2222222222" placeholder="+91 Enter mobile number" required>
   <input type="email" name="entry.3333333333" placeholder="Email ID" required>
   <button type="submit">Submit your query</button>
 </form>
+
 <p id="thankyou-msg" style="display:none; color: green; font-weight:bold;">
   ✅ Thanks! Your enquiry has been sent successfully.
 </p>
 
 <script>
-document.querySelector("form").addEventListener("Submit your query", function(e) {
-  setTimeout(() => {
-    document.getElementById("thankyou-msg").style.display = "block";
-  }, 500);
-});
+  const form = document.getElementById('queryForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault(); // prevent reload
+    const formData = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      mode: 'no-cors'
+    }).then(() => {
+      document.getElementById("thankyou-msg").style.display = "block";
+      form.reset(); // clear fields
+    }).catch((error) => {
+      alert('Error! ' + error.message);
+    });
+  });
 </script>
+
 
   </section>
 
@@ -66,3 +77,4 @@ document.querySelector("form").addEventListener("Submit your query", function(e)
   <script src="script.js"></script>
 </body>
 </html>
+
