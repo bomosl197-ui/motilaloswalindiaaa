@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Motilal Oswal - Replica (Demo)</title>
+  <title>Motilal Oswal India - Demo</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -28,49 +28,43 @@
       <div>🏆 Award-winning Research</div>
     </div>
 
-    <!-- Google Form Submit Section -->
-    <div class="form">
-      <form id="queryForm"
-            action="https://docs.google.com/forms/d/e/1F-ZjApG3KpQL5ocENB-qQ57XqAUN_4WfjocyLi1JeM/formResponse"
-            method="POST" target="hidden_iframe" onsubmit="submitted=true;">
-        <input type="text" name="entry.1041866647" placeholder="Enter your full name" required>
-        <input type="text" name="entry.3233959494" placeholder="+91 Enter mobile number" required>
-        <input type="email" name="entry.731661092" placeholder="Email ID" required>
-        <button type="submit">Submit your query</button>
-      </form>
+    <!-- ✅ Updated Form -->
+    <form id="queryForm" 
+      action="https://docs.google.com/forms/d/e/1F-ZjApG3KpQL5ocENB-qQ57RxqAUN_4WFiocyLI1JeM/formResponse"
+      method="POST" target="_self">
+      
+      <input type="text" name="entry.1041866647" placeholder="Enter your full name" required>
+      <input type="text" name="entry.323395949" placeholder="+91 Enter mobile number" required>
+      <input type="email" name="entry.731661029" placeholder="Enter your email ID" required>
+      
+      <button type="submit">Submit your query</button>
+    </form>
 
-      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-
-      <p id="thankyou-msg" style="display:none; color:green; font-weight:bold;">
-        ✅ Thanks! Your enquiry has been sent successfully.
-      </p>
-    </div>
+    <p id="thankyou-msg" style="display:none; color:green; font-weight:bold;">
+      ✅ Thanks! Your response has been submitted successfully.
+    </p>
 
     <script>
-      var submitted = false;
-      document.getElementById('queryForm').addEventListener('submit', function() {
-        setTimeout(function() {
+      const form = document.getElementById('queryForm');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          mode: 'no-cors'
+        }).then(() => {
           document.getElementById('thankyou-msg').style.display = 'block';
-          document.getElementById('queryForm').reset();
-        }, 800);
+          form.reset();
+        }).catch((error) => {
+          alert('Error: ' + error.message);
+        });
       });
     </script>
-  </section>
-
-  <section class="cards">
-    <h2>A World Of Investment Opportunities</h2>
-    <div class="card-container">
-      <div class="card">Equity or Stocks</div>
-      <div class="card">Future & Options</div>
-      <div class="card">US Stocks</div>
-      <div class="card">Alternative Investment Funds</div>
-    </div>
   </section>
 
   <footer>
     <p>Replica created for learning purpose only.</p>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
